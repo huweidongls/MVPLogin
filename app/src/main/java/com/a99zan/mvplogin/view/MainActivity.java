@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.a99zan.mvplogin.R;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements ILoginView {
     private EditText etPwd;
     private Button btn;
     private LoginPresenter loginPresenter;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements ILoginView {
      */
     private void init() {
         loginPresenter = new LoginPresenter(this);
+        textView = (TextView) findViewById(R.id.tv);
         etName = (EditText) findViewById(R.id.etName);
         etPwd = (EditText) findViewById(R.id.etPwd);
         btn = (Button) findViewById(R.id.btn);
@@ -60,5 +63,10 @@ public class MainActivity extends AppCompatActivity implements ILoginView {
     @Override
     public void showLoginFail() {
         Toast.makeText(MainActivity.this, "登陆失败！", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showLoginInfo(String str) {
+        textView.setText(str);
     }
 }

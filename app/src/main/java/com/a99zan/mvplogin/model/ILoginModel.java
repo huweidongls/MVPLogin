@@ -5,5 +5,5 @@ package com.a99zan.mvplogin.model;
  */
 
 public interface ILoginModel {
-    void loginToServer();
+    void loginToServer(String name, String pwd);
 }

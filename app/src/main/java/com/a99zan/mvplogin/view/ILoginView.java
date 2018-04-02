@@ -12,4 +12,5 @@ public interface ILoginView {
     String getPassWord();
     void showLoginSuccess();
     void showLoginFail();
+    void showLoginInfo(String str);
 }
