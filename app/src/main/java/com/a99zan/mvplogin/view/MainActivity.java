@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements ILoginView {
         etPwd = (EditText) findViewById(R.id.etPwd);
         btn = (Button) findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 loginPresenter.login();
@@ -68,5 +69,11 @@ public class MainActivity extends AppCompatActivity implements ILoginView {
     @Override
     public void showLoginInfo(String str) {
         textView.setText(str);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        loginPresenter = null;
     }
 }
