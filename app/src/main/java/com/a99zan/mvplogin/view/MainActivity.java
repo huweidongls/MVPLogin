@@ -1,6 +1,5 @@
 package com.a99zan.mvplogin.view;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +10,7 @@ import android.widget.Toast;
 import com.a99zan.mvplogin.R;
 import com.a99zan.mvplogin.presenter.LoginPresenter;
 
-public class MainActivity extends AppCompatActivity implements ILoginView {
+public class MainActivity extends BaseActivity implements ILoginView {
 
     private EditText etName;
     private EditText etPwd;
@@ -20,18 +19,19 @@ public class MainActivity extends AppCompatActivity implements ILoginView {
     private TextView textView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
 
-        init();
-
+    @Override
+    protected void init(Bundle savedInstanceState) {
+        initView();
     }
 
     /**
      * 初始化控件
      */
-    private void init() {
+    private void initView() {
         loginPresenter = new LoginPresenter(this);
         textView = (TextView) findViewById(R.id.tv);
         etName = (EditText) findViewById(R.id.etName);
@@ -41,7 +41,23 @@ public class MainActivity extends AppCompatActivity implements ILoginView {
 
             @Override
             public void onClick(View v) {
-                loginPresenter.login();
+
+                loginPresenter.login(MainActivity.this);
+
+//                String name = "123";
+//                String pwd = "123";
+//                RetrofitHelper.getApiService()
+//                        .getLoginInfo(name, pwd)
+//                        .compose(MainActivity.this.<LoginBean>bindToLifecycle())
+//                        .compose(ProgressUtils.<LoginBean>applyProgressBar(MainActivity.this))
+//                        .subscribeOn(Schedulers.io())
+//                        .observeOn(AndroidSchedulers.mainThread())
+//                        .subscribe(new DefaultObserver<LoginBean>() {
+//                            @Override
+//                            public void onSuccess(LoginBean response) {
+//                                Log.e("111", "请求成功，妹子个数为" + response.getInfo());
+//                            }
+//                        });
             }
         });
     }
@@ -58,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements ILoginView {
 
     @Override
     public void showLoginSuccess() {
-        Toast.makeText(MainActivity.this, "登陆成功！", Toast.LENGTH_SHORT).show();
+        showToast("登录成功！");
     }
 
     @Override

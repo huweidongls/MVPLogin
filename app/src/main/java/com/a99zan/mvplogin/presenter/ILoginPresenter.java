@@ -1,5 +1,7 @@
 package com.a99zan.mvplogin.presenter;
 
+import android.content.Context;
+
 import com.a99zan.mvplogin.bean.LoginBean;
 
 /**
@@ -9,5 +11,5 @@ import com.a99zan.mvplogin.bean.LoginBean;
 public interface ILoginPresenter {
     void loginSuccess(LoginBean loginBean);
     void loginFail();
-    void login();
+    void login(Context context);
 }

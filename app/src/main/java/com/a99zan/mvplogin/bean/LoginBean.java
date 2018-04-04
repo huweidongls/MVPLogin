@@ -7,18 +7,18 @@ package com.a99zan.mvplogin.bean;
 public class LoginBean {
 
     /**
-     * code : 1
-     * msg : {"info":"success!","name":"hu","pwd":"123456"}
+     * code : 0
+     * msg : {"info":"fail!","name":"1","pwd":"2"}
      */
 
-    private String code;
+    private int code;
     private MsgBean msg;
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
@@ -32,9 +32,9 @@ public class LoginBean {
 
     public static class MsgBean {
         /**
-         * info : success!
-         * name : hu
-         * pwd : 123456
+         * info : fail!
+         * name : 1
+         * pwd : 2
          */
 
         private String info;

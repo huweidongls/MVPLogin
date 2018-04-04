@@ -1,5 +1,6 @@
 package com.a99zan.mvplogin.presenter;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.a99zan.mvplogin.bean.LoginBean;
@@ -21,11 +22,11 @@ public class LoginPresenter implements ILoginPresenter {
     }
 
     @Override
-    public void login() {
+    public void login(Context context) {
         String name = iLoginView.getUserName();
         String pwd = iLoginView.getPassWord();
         Log.e("111presenter", name+"--------"+pwd);
-        loginModel.loginToServer(name, pwd);
+        loginModel.loginToServer(context, name, pwd);
     }
 
     @Override

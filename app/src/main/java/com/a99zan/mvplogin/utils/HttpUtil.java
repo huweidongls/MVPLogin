@@ -7,7 +7,6 @@ import java.io.IOException;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.Call;
@@ -25,7 +24,7 @@ public class HttpUtil {
 
     private static HttpUtil downloadUtil;
     private final OkHttpClient okHttpClient;
-    public static String BASE_URL = "http://192.168.0.238/";
+    private static String BASE_URL = "http://192.168.0.238/";
 
     public static HttpUtil getInstance() {
         if (downloadUtil == null) {
@@ -51,7 +50,7 @@ public class HttpUtil {
         mcall.enqueue(callback);
     }
 
-    public void post(String url, RequestBody requestBody, Callback callback){
+    private void post(String url, RequestBody requestBody, Callback callback){
         Request request = new Request.Builder()
                 .url(BASE_URL+url)
                 .post(requestBody)
@@ -59,14 +58,14 @@ public class HttpUtil {
         okHttpClient.newCall(request).enqueue(callback);
     }
 
-    public void rxGet(final String url, Observer<String> observer){
+    public void rxGet(final String url, AObserver observer){
         Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(final ObservableEmitter<String> e) throws Exception {
                 get(url, new Callback() {
                     @Override
                     public void onFailure(Request request, IOException e) {
-
+                        Log.e("222", "网络请求失败！");
                     }
 
                     @Override
@@ -84,14 +83,14 @@ public class HttpUtil {
                 .subscribe(observer);
     }
 
-    public void rxPost(final String url, final RequestBody requestBody, Observer<String> observer){
+    public void rxPost(final String url, final RequestBody requestBody, AObserver observer){
         Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(final ObservableEmitter<String> e) throws Exception {
                 post(url, requestBody, new Callback() {
                     @Override
                     public void onFailure(Request request, IOException e) {
-
+                        Log.e("222", "网络请求失败！");
                     }
 
                     @Override
