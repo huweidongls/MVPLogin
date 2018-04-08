@@ -23,7 +23,7 @@ public class LoginModel implements ILoginModel {
     @Override
     public void loginToServer(Context context, String name, String pwd) {
         String url = "login.php?name=" + name + "&pwd=" + pwd;
-        HttpUtil.getInstance().rxGet(url, new AObserver() {
+        HttpUtil.getInstance().rxGet(url, new AObserver<String>() {
             @Override
             public void onNext(String value) {
                 Gson gson = new Gson();

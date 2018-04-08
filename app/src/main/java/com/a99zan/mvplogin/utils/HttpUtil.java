@@ -58,7 +58,7 @@ public class HttpUtil {
         okHttpClient.newCall(request).enqueue(callback);
     }
 
-    public void rxGet(final String url, AObserver observer){
+    public void rxGet(final String url, AObserver<String> observer){
         Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(final ObservableEmitter<String> e) throws Exception {
@@ -83,7 +83,7 @@ public class HttpUtil {
                 .subscribe(observer);
     }
 
-    public void rxPost(final String url, final RequestBody requestBody, AObserver observer){
+    public void rxPost(final String url, final RequestBody requestBody, AObserver<String> observer){
         Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(final ObservableEmitter<String> e) throws Exception {
