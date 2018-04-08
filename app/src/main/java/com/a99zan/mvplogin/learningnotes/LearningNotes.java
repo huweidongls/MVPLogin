@@ -20,4 +20,5 @@ public class LearningNotes {
     //2018.04.08
     //修改好github代码仓库
     //学习第一行代码（第二版），巩固Android基础知识，整理脑中Android思路，缺查补漏
+    //学习php至类的对象链实现
 }
