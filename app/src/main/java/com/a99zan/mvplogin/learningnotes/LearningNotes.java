@@ -21,4 +21,10 @@ public class LearningNotes {
     //修改好github代码仓库
     //学习第一行代码（第二版），巩固Android基础知识，整理脑中Android思路，缺查补漏
     //学习php至类的对象链实现
+
+    //2018.04.13
+    //近五天调试好基于cordova的玖玖云老板端与员工端
+    //企航课程webview接入，调试相机拍照与调用系统图库，actionsheetdialog的用法
+    //webview的坑之博客  https://blog.csdn.net/villa_mou/article/details/78728417
+    //webview拍照上传github地址  https://github.com/TeachCourse/BlogSource
 }
