@@ -37,4 +37,5 @@ public class LearningNotes {
     //android8.0需要在shouldOverrideUrlLoading方法中进行以上代码的适配，否则返回键无效，直接退出APP
     //水波纹效果  https://www.2cto.com/kf/201803/732188.html
     //Android8.0 WebView返回上一层失效  https://www.2cto.com/kf/201803/732191.html
+    //webview缓存库  https://github.com/yale8848/CacheWebView
 }
