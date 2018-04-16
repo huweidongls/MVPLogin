@@ -27,4 +27,12 @@ public class LearningNotes {
     //企航课程webview接入，调试相机拍照与调用系统图库，actionsheetdialog的用法
     //webview的坑之博客  https://blog.csdn.net/villa_mou/article/details/78728417
     //webview拍照上传github地址  https://github.com/TeachCourse/BlogSource
+
+    //2018.04.16
+//    if(Build.VERSION.SDK_INT<26) {
+//        view.loadUrl(url);
+//        return true;
+//    }
+//    return false;
+    //android8.0需要在shouldOverrideUrlLoading方法中进行以上代码的适配，否则返回键无效，直接退出APP
 }
