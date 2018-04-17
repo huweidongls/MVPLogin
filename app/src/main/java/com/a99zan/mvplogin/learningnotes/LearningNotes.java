@@ -38,4 +38,8 @@ public class LearningNotes {
     //水波纹效果  https://www.2cto.com/kf/201803/732188.html
     //Android8.0 WebView返回上一层失效  https://www.2cto.com/kf/201803/732191.html
     //webview缓存库  https://github.com/yale8848/CacheWebView
+
+    //2018.04.17
+    //比较好的7个开源项目  https://juejin.im/entry/58ba1cf72f301e006c5f4774
+    //非常实用的第三方库  https://blog.csdn.net/ljx1400052550/article/details/79953495
 }
