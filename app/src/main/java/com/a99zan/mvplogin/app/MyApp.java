@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
+import com.vise.xsnow.http.ViseHttp;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -28,6 +30,10 @@ public class MyApp extends Application {
         super.onCreate();
 //        Utils.init(this);
 //        instance = this;
+        ViseHttp.init(this);
+        ViseHttp.CONFIG()
+                //配置请求主机地址
+                .baseUrl("http://192.168.0.236/");
     }
 
     public synchronized static MyApp getInstance() {

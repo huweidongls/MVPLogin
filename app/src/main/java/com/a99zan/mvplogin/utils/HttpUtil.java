@@ -22,90 +22,90 @@ import okhttp3.Response;
 
 public class HttpUtil {
 
-    private static HttpUtil downloadUtil;
-    private final OkHttpClient okHttpClient;
-    private static String BASE_URL = "http://192.168.0.238/";
-
-    public static HttpUtil getInstance() {
-        if (downloadUtil == null) {
-            synchronized (HttpUtil.class){
-                if(downloadUtil == null){
-                    downloadUtil = new HttpUtil();
-                }
-            }
-        }
-        return downloadUtil;
-    }
-
-    private HttpUtil() {
-        okHttpClient = new OkHttpClient();
-    }
-
-    private void get(String url, Callback callback){
-        Request.Builder requestBuilder = new Request.Builder().url(BASE_URL+url);
-        //可以省略，默认是GET请求
-        requestBuilder.method("GET",null);
-        Request request = requestBuilder.build();
-        Call mcall= okHttpClient.newCall(request);
-        mcall.enqueue(callback);
-    }
-
-    private void post(String url, RequestBody requestBody, Callback callback){
-        Request request = new Request.Builder()
-                .url(BASE_URL+url)
-                .post(requestBody)
-                .build();
-        okHttpClient.newCall(request).enqueue(callback);
-    }
-
-    public void rxGet(final String url, AObserver<String> observer){
-        Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
-            @Override
-            public void subscribe(final ObservableEmitter<String> e) throws Exception {
-                get(url, new Callback() {
-                    @Override
-                    public void onFailure(Request request, IOException e) {
-                        Log.e("222", "网络请求失败！");
-                    }
-
-                    @Override
-                    public void onResponse(Response response) throws IOException {
-                        String result = response.body().string();
-                        Log.e("222", result+"2222222222");
-                        e.onNext(result);
-                        e.onComplete();
-                    }
-                });
-            }
-        });
-        observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
-    }
-
-    public void rxPost(final String url, final RequestBody requestBody, AObserver<String> observer){
-        Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
-            @Override
-            public void subscribe(final ObservableEmitter<String> e) throws Exception {
-                post(url, requestBody, new Callback() {
-                    @Override
-                    public void onFailure(Request request, IOException e) {
-                        Log.e("222", "网络请求失败！");
-                    }
-
-                    @Override
-                    public void onResponse(Response response) throws IOException {
-                        String result = response.body().string();
-                        Log.e("222", result+"2222222222");
-                        e.onNext(result);
-                        e.onComplete();
-                    }
-                });
-            }
-        });
-        observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer);
-    }
+//    private static HttpUtil downloadUtil;
+//    private final OkHttpClient okHttpClient;
+//    private static String BASE_URL = "http://192.168.0.238/";
+//
+//    public static HttpUtil getInstance() {
+//        if (downloadUtil == null) {
+//            synchronized (HttpUtil.class){
+//                if(downloadUtil == null){
+//                    downloadUtil = new HttpUtil();
+//                }
+//            }
+//        }
+//        return downloadUtil;
+//    }
+//
+//    private HttpUtil() {
+//        okHttpClient = new OkHttpClient();
+//    }
+//
+//    private void get(String url, Callback callback){
+//        Request.Builder requestBuilder = new Request.Builder().url(BASE_URL+url);
+//        //可以省略，默认是GET请求
+//        requestBuilder.method("GET",null);
+//        Request request = requestBuilder.build();
+//        Call mcall= okHttpClient.newCall(request);
+//        mcall.enqueue(callback);
+//    }
+//
+//    private void post(String url, RequestBody requestBody, Callback callback){
+//        Request request = new Request.Builder()
+//                .url(BASE_URL+url)
+//                .post(requestBody)
+//                .build();
+//        okHttpClient.newCall(request).enqueue(callback);
+//    }
+//
+//    public void rxGet(final String url, AObserver<String> observer){
+//        Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
+//            @Override
+//            public void subscribe(final ObservableEmitter<String> e) throws Exception {
+//                get(url, new Callback() {
+//                    @Override
+//                    public void onFailure(Request request, IOException e) {
+//                        Log.e("222", "网络请求失败！");
+//                    }
+//
+//                    @Override
+//                    public void onResponse(Response response) throws IOException {
+//                        String result = response.body().string();
+//                        Log.e("222", result+"2222222222");
+//                        e.onNext(result);
+//                        e.onComplete();
+//                    }
+//                });
+//            }
+//        });
+//        observable.subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(observer);
+//    }
+//
+//    public void rxPost(final String url, final RequestBody requestBody, AObserver<String> observer){
+//        Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
+//            @Override
+//            public void subscribe(final ObservableEmitter<String> e) throws Exception {
+//                post(url, requestBody, new Callback() {
+//                    @Override
+//                    public void onFailure(Request request, IOException e) {
+//                        Log.e("222", "网络请求失败！");
+//                    }
+//
+//                    @Override
+//                    public void onResponse(Response response) throws IOException {
+//                        String result = response.body().string();
+//                        Log.e("222", result+"2222222222");
+//                        e.onNext(result);
+//                        e.onComplete();
+//                    }
+//                });
+//            }
+//        });
+//        observable.subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(observer);
+//    }
 
 }

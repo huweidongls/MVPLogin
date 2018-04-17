@@ -42,4 +42,5 @@ public class LearningNotes {
     //2018.04.17
     //比较好的7个开源项目  https://juejin.im/entry/58ba1cf72f301e006c5f4774
     //非常实用的第三方库  https://blog.csdn.net/ljx1400052550/article/details/79953495
+    //测试badgeview  项目名为shuzitixingbowen
 }
